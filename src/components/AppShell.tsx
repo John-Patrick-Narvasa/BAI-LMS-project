@@ -21,10 +21,10 @@ type NavItem = { label: string; to: string };
 
 // TO EDIT
 const adminNav: NavItem[] = [
-  // { label: "Dashboard", to: "/admin/dashboard" },
+  { label: "Dashboard", to: "/admin/dashboard" },
   { label: "Books", to: "/admin/books" },
-  // { label: "Members", to: "/admin/members" },
-  // { label: "Circulation", to: "/admin/circulation" },
+  { label: "Members", to: "/admin/members" },
+  { label: "Circulation", to: "/admin/circulation" },
 ];
 
 const studentNav: NavItem[] = [
@@ -47,7 +47,7 @@ export function AppShell({
 }) {
   const nav = role === "admin" ? adminNav : studentNav;
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const who = role === "admin" ? "L. Laureta · Admin" : "Natheniel Ellacer · Student";
+  const who = role === "admin" ? "L. Laureta · Admin" : "Nathaniel Ellacer · Student";
 
   return (
     <div className="flex min-h-screen flex-col bg-background">

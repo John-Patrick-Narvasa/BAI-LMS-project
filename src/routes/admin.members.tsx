@@ -51,8 +51,8 @@ function MembersPage() {
     >
       <Tabbed
         tabs={[
-          { id: "dir", label: "Directory", content: <DirectoryTab /> },
-          { id: "entry", label: "Add/Edit Member (Entry Flow)", content: <MemberWizard /> },
+          { id: "dir", label: "Users Masterlist", content: <UserList /> },
+          // { id: "entry", label: "Add/Edit Member (Entry Flow)", content: <MemberWizard /> },
         ]}
       />
     </AppShell>
@@ -63,7 +63,7 @@ function initials(m: Member) {
   return `${m.firstName.charAt(0)}${m.lastName.charAt(0)}`;
 }
 
-function DirectoryTab() {
+function UserList() {
   const [selected, setSelected] = useState<Member | null>(null);
   const [type, setType] = useState("All");
   const [status, setStatus] = useState("All");
@@ -77,9 +77,9 @@ function DirectoryTab() {
   return (
     <div>
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        <Field label="Membership type">
+        <Field label="User type">
           <SelectInput value={type} onChange={(e) => setType(e.target.value)}>
-            {["All", "Standard", "Faculty", "Guest"].map((t) => (
+            {["All", "User", "Admin", "Guest"].map((t) => (
               <option key={t}>{t}</option>
             ))}
           </SelectInput>
