@@ -55,7 +55,7 @@ export function AppShell({
           <Link to={nav[0]!.to} className="flex items-center gap-2.5">
             <Logo size={34} />
             <span className="hidden text-lg font-bold tracking-tight sm:inline">
-              LMS
+              BAI
               <span className="ml-2 text-xs font-medium opacity-75">BAI Archives</span>
             </span>
           </Link>
@@ -174,7 +174,7 @@ export function AppShell({
       <footer className="bg-primary text-primary-foreground">
         <div className="flex flex-col gap-2 px-4 py-4 text-xs md:flex-row md:items-center md:justify-between md:px-8">
           <p className="font-semibold">
-            The BAI Archives · Books of Art and Intelligence
+            Archives · Books of Art and Intelligence
           </p>
           <p className="opacity-85">Mon–Sat, 8:00 AM – 7:00 PM</p>
           <div className="flex gap-4 opacity-85">
