@@ -236,6 +236,39 @@ function EntryWizard() {
   const [quantity, setQuantity] = useState(5);
   const [done, setDone] = useState(false);
 
+  const [bookForm, setBookForm] = useState({
+    title: "It Ends with Us",
+    authors: "Colleen Hoover",
+    category: "Science",
+    keywords:
+      "Contemporary Fiction, Romance, Drama, Relationships, Domestic Violence, Resilience",
+    summary:
+      "A deeply personal story following Lily Bloom as she navigates a complex romantic relationship while confronting childhood trauma and difficult choices regarding cycle-breaking and emotional boundaries.",
+
+    edition: "1",
+    publisher: "Atria Books",
+    publicationYear: "2016",
+    language: "English",
+    pages: "384",
+    callNumber: "PS3608.O623 I84 2016",
+    price: "16.99",
+
+    format: "Paperback",
+    location: "Main Library - Shelf B2",
+    copyStatus: "Available",
+    condition: "Good",
+    replacementCost: "16.99",
+    procurementRecord: "PR-2026-FIC-082",
+
+    licensedQuantity: "1",
+    fileFormat: "PDF",
+    accessUrl: "https://ebooks.bai.edu/it-ends-with-us",
+    fileSize: "18.4",
+    maxConcurrent: "6",
+    copyrightStatus: "Licensed",
+    accessRestrictions: "Campus network only",
+  });
+
   const match = books.find((b) => b.isbn13 === isbn.trim() || b.isbn10 === isbn.trim());
 
   if (done) {
@@ -323,24 +356,49 @@ function EntryWizard() {
           <h2 className="font-bold">Step 2 — Core info sheet</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Title">
-              <TextInput defaultValue="It Ends with Us" />
+              <TextInput
+                value={bookForm.title}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, title: e.target.value })
+                }
+              />
             </Field>
             <Field label="Author(s)">
-              <TextInput defaultValue="Colleen Hoover" />
+              <TextInput
+                value={bookForm.authors}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, authors: e.target.value })
+                }
+              />
             </Field>
             <Field label="Category">
-              <SelectInput defaultValue="Science">
+                <SelectInput
+                  value={bookForm.category}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, category: e.target.value })
+                  }
+                > 
                 {categories.map((c) => (
                   <option key={c}>{c}</option>
                 ))}
               </SelectInput>
             </Field>
             <Field label="Keywords (comma separated)">
-              <TextInput defaultValue="Contemporary Fiction, Romance, Drama, Relationships, Domestic Violence, Resilience" />
+              <TextInput
+                value={bookForm.keywords}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, keywords: e.target.value })
+                }
+              />
             </Field>
           </div>
           <Field label="Summary">
-            <TextArea defaultValue="A deeply personal story following Lily Bloom as she navigates a complex romantic relationship while confronting childhood trauma and difficult choices regarding cycle-breaking and emotional boundaries." />
+            <TextArea
+              value={bookForm.summary}
+              onChange={(e) =>
+                setBookForm({ ...bookForm, summary: e.target.value })
+              }
+            />
           </Field>
           <Field label="Cover image">
             <div className="flex items-center gap-3 rounded-md border border-dashed border-input p-4">
@@ -360,29 +418,64 @@ function EntryWizard() {
           <h2 className="font-bold">Step 3 — Edition info sheet</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Edition number">
-              <TextInput defaultValue="1" />
+              <TextInput
+                value={bookForm.edition}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, edition: e.target.value })
+                }
+              />
             </Field>
             <Field label="Publisher">
-              <TextInput defaultValue="Atria Books" />
+              <TextInput
+                value={bookForm.publisher}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, publisher: e.target.value })
+                }
+              />
             </Field>
             <Field label="Publication year">
-              <TextInput defaultValue="2016" />
+              <TextInput
+                value={bookForm.publicationYear}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, publicationYear: e.target.value })
+                }
+              />
             </Field>
             <Field label="Language">
-              <SelectInput defaultValue="English">
+              <SelectInput
+                value={bookForm.language}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, language: e.target.value })
+                }
+              >
                 <option>English</option>
                 <option>Filipino</option>
                 <option>Spanish</option>
               </SelectInput>
             </Field>
             <Field label="Page count">
-              <TextInput defaultValue="384" />
+              <TextInput
+                value={bookForm.pages}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, pages: e.target.value })
+                }
+              />
             </Field>
             <Field label="Call number">
-              <TextInput defaultValue="PS3608.O623 I84 2016" />
+              <TextInput
+                value={bookForm.callNumber}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, callNumber: e.target.value })
+                }
+              />
             </Field>
             <Field label="Price cost (per unit)">
-              <TextInput defaultValue="16.99" />
+              <TextInput
+                value={bookForm.price}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, price: e.target.value })
+                }
+              />
             </Field>
             <Field label="Asset type">
               <SelectInput
