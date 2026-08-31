@@ -99,7 +99,7 @@ function DirectoryTab() {
             <thead className="bg-secondary text-left text-xs font-semibold text-secondary-foreground uppercase">
               <tr>
                 <th className="px-4 py-2.5">Member</th>
-                <th className="px-4 py-2.5">Student ID</th>
+                <th className="px-4 py-2.5">User ID</th>
                 <th className="px-4 py-2.5">Department</th>
                 <th className="px-4 py-2.5">Type</th>
                 <th className="px-4 py-2.5">Status</th>
@@ -110,7 +110,7 @@ function DirectoryTab() {
             <tbody className="divide-y divide-border">
               {rows.map((m) => (
                 <tr
-                  key={m.studentId}
+                  key={m.userId}
                   onClick={() => setSelected(m)}
                   className="cursor-pointer hover:bg-secondary/60"
                 >
@@ -120,7 +120,7 @@ function DirectoryTab() {
                     </span>
                     {m.firstName} {m.lastName}
                   </td>
-                  <td className="px-4 py-3 font-mono text-xs">{m.studentId}</td>
+                  <td className="px-4 py-3 font-mono text-xs">{m.userId}</td>
                   <td className="px-4 py-3">{m.department}</td>
                   <td className="px-4 py-3">{m.membershipType}</td>
                   <td className="px-4 py-3">
@@ -152,7 +152,7 @@ function DirectoryTab() {
                   {selected.firstName} {selected.lastName}
                 </SheetTitle>
                 <SheetDescription>
-                  {selected.studentId} · {selected.department}
+                  {selected.userId} · {selected.department}
                 </SheetDescription>
               </SheetHeader>
               <div className="space-y-5 px-4 pb-8 text-sm">
@@ -180,7 +180,7 @@ function DirectoryTab() {
                   <h3 className="font-bold">Loan history</h3>
                   <ul className="mt-2 divide-y divide-border rounded-md border border-border">
                     {loans
-                      .filter((l) => l.studentId === selected.studentId)
+                      .filter((l) => l.userId === selected.userId)
                       .map((l) => (
                         <li
                           key={l.issueId}
@@ -195,7 +195,7 @@ function DirectoryTab() {
                           <StatusBadge>{l.status}</StatusBadge>
                         </li>
                       ))}
-                    {loans.filter((l) => l.studentId === selected.studentId).length ===
+                    {loans.filter((l) => l.userId === selected.userId).length ===
                     0 ? (
                       <li className="px-3 py-2 text-muted-foreground">
                         No loans on record.
@@ -208,7 +208,7 @@ function DirectoryTab() {
                   <h3 className="font-bold">Fine history</h3>
                   <ul className="mt-2 divide-y divide-border rounded-md border border-border">
                     {fines
-                      .filter((f) => f.studentId === selected.studentId)
+                      .filter((f) => f.userId === selected.userId)
                       .map((f) => (
                         <li
                           key={f.fineId}
@@ -223,7 +223,7 @@ function DirectoryTab() {
                           <StatusBadge>{f.paymentStatus}</StatusBadge>
                         </li>
                       ))}
-                    {fines.filter((f) => f.studentId === selected.studentId).length ===
+                    {fines.filter((f) => f.userId === selected.userId).length ===
                     0 ? (
                       <li className="px-3 py-2 text-muted-foreground">No fines issued.</li>
                     ) : null}
@@ -248,7 +248,7 @@ function MemberWizard() {
   const [query, setQuery] = useState("");
   const [done, setDone] = useState(false);
   const match = members.find(
-    (m) => m.studentId === query.trim() || m.email === query.trim(),
+    (m) => m.userId === query.trim() || m.email === query.trim(),
   );
 
   if (done) {
@@ -282,8 +282,8 @@ function MemberWizard() {
 
       {step === 0 ? (
         <div className="card-surface space-y-4 p-5">
-          <h2 className="font-bold">Step 1 — Student ID or email check</h2>
-          <Field label="Student ID / Email">
+          <h2 className="font-bold">Step 1 — User ID or email check</h2>
+          <Field label="User ID / Email">
             <TextInput
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -293,7 +293,7 @@ function MemberWizard() {
           {query.trim() ? (
             <p className="rounded-md bg-secondary p-3 text-sm text-secondary-foreground">
               {match
-                ? `Exists in DB — student_id ${match.studentId} fetched (${match.firstName} ${match.lastName}). Jumping to membership view.`
+                ? `Exists in DB — student_id ${match.userId} fetched (${match.firstName} ${match.lastName}). Jumping to membership view.`
                 : "Not found — a new STUDENT record will be created."}
             </p>
           ) : null}
@@ -390,7 +390,7 @@ function MemberWizard() {
                   {match ? `${match.firstName} ${match.lastName}` : "Jonas Mabini"}
                 </p>
                 <p className="text-sm opacity-85">
-                  {match?.studentId ?? "2026-01432"} ·{" "}
+                  {match?.userId ?? "2026-01432"} ·{" "}
                   {match?.department ?? "BS Information Systems"}
                 </p>
                 <p className="mt-2 font-mono text-xs tracking-[0.3em] opacity-90">

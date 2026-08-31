@@ -5,6 +5,21 @@ import coverCivicMemory from "@/assets/covers/civic-memory.jpg";
 import coverIntelligenceIllustrated from "@/assets/covers/intelligence-illustrated.jpg";
 import coverCoastalEcology from "@/assets/covers/coastal-ecology.jpg";
 
+import coverItEndsWithUs from "@/assets/covers/it_ends_with_us_cover.jpg";
+import coverModernOperatingSystems from "@/assets/covers/modern_operating_systems_5th_cover.jpg";
+import coverSapiens from "@/assets/covers/sapiens_a_brief_history_of_humankind_cover.jpg";
+import coverIntroductionToLinearAlgebra from "@/assets/covers/introduction_to_linear_algebra_5th_cover.jpg";
+import coverTheStoryOfArt from "@/assets/covers/the_story_of_art_16th_cover.jpg";
+
+import coverCalculusStewart from "@/assets/covers/calculus_book.jpg";
+import coverBananasStover from "@/assets/covers/bananas.jpg";
+import coverHarryPotter1 from "@/assets/covers/Harry-Potter-and-the-Sorcerers-Stone-Book-Cover.jpg"
+
+import coverBriefHistoryTime from "@/assets/covers/History_of_time.jpg";
+import coverDesigningDataIntensive from "@/assets/covers/Dasigning Data-intensive applications.jpg";
+
+
+
 export const FINE_RATE_PER_DAY = 0.5;
 
 export type AssetType = "Physical" | "Digital";
@@ -38,144 +53,217 @@ export type Book = {
 export const books: Book[] = [
   {
     bookId: "BK-1001",
-    title: "The Art of Quiet Machines",
-    authors: "Elena Marquez",
-    category: "Computer Science",
-    isbn13: "978-0132350884",
-    isbn10: "0132350884",
+    title: "Modern Operating Systems",
+    authors: "Andrew S. Tanenbaum, Herbert Bos",
+    category: "Technology",
+    isbn13: "978-0138221874",
+    isbn10: "0138221870",
     type: "Physical",
-    publisher: "Northfield Press",
-    year: 2019,
+    publisher: "Pearson",
+    year: 2023,
     language: "English",
-    pages: 448,
-    callNumber: "QA76.9 .M37 2019",
+    pages: 1136,
+    callNumber: "QA76.76.O63 T36 2023",
     copiesAvailable: 3,
-    copiesTotal: 6,
-    summary:
-      "A practical study of intelligent systems and the craft of writing software that lasts.",
-    keywords: ["algorithms", "software craft", "systems"],
-    cover: coverQuietMachines,
-
-    location: "Shelf A / Rack 3",
+    copiesTotal: 3,
+    summary: "A comprehensive guide covering the fundamental concepts, design, and implementation of modern operating systems, including process management, virtualization, security, and storage architecture.",
+    keywords: ["Operating Systems", "Process Management", "Memory Management", "File Systems", "Virtualization", "System Security"],
+    cover: coverModernOperatingSystems,
+    location: "Shelf A / Rack 1",
   },
   {
     bookId: "BK-1002",
-    title: "Banana Groves of the Archipelago",
-    authors: "Rodrigo Salazar, Mina Cruz",
-    category: "Agriculture",
-    isbn13: "978-0596809485",
-    isbn10: "0596809484",
+    title: "It Ends with Us",
+    authors: "Colleen Hoover",
+    category: "Fiction",
+    isbn13: "978-1501110368",
+    isbn10: "1501110365",
     type: "Physical",
-    publisher: "Isla Verde Publishing",
-    year: 2021,
+    publisher: "Atria Books",
+    year: 2016,
     language: "English",
-    pages: 312,
-    callNumber: "SB379 .S24 2021",
-    copiesAvailable: 0,
-    copiesTotal: 4,
-    summary: "A field survey of tropical cultivation practices across island provinces.",
-    keywords: ["agriculture", "tropical crops", "field study"],
-    cover: coverBananaGroves,
-
-    location: "Shelf C / Rack 1",
-  },
-  {
-    bookId: "BK-1003",
-    title: "Foundations of Discrete Thought",
-    authors: "Hilda Bautista",
-    category: "Mathematics",
-    isbn13: "978-1491950296",
-    isbn10: "1491950293",
-    type: "Digital",
-    publisher: "Acacia Academic",
-    year: 2020,
-    language: "English",
-    pages: 520,
-    callNumber: "QA39.3 .B38 2020",
+    pages: 384,
+    callNumber: "PS3608.O623 I84 2016",
     copiesAvailable: 5,
-    copiesTotal: 8,
-    summary: "Set theory, logic and combinatorics for undergraduate programs.",
-    keywords: ["logic", "combinatorics", "proofs"],
-    cover: coverDiscreteThought,
-
-    fileFormat: "PDF",
-    maxConcurrent: 8,
-  },
-  {
-    bookId: "BK-1004",
-    title: "Municipal Records and Civic Memory",
-    authors: "Joseph Alonzo",
-    category: "History",
-    isbn13: "978-0143127741",
-    isbn10: "0143127748",
-    type: "Physical",
-    publisher: "Civic House",
-    year: 2017,
-    language: "Filipino",
-    pages: 274,
-    callNumber: "DS655 .A46 2017",
-    copiesAvailable: 2,
-    copiesTotal: 3,
-    summary: "How local archives shape community identity in the provinces.",
-    keywords: ["archives", "local history"],
-    cover: coverCivicMemory,
-
+    copiesTotal: 5,
+    summary: "A deeply personal story following Lily Bloom as she navigates a complex romantic relationship while confronting childhood trauma and difficult choices regarding cycle-breaking and emotional boundaries.",
+    keywords: ["Contemporary Fiction", "Romance", "Drama", "Relationships", "Domestic Violence", "Resilience"],
+    cover: coverItEndsWithUs,
     location: "Shelf B / Rack 2",
   },
   {
-    bookId: "BK-1005",
-    title: "Intelligence, Illustrated",
-    authors: "Priya Raman",
-    category: "Art",
-    isbn13: "978-0262035613",
-    isbn10: "0262035618",
-    type: "Digital",
-    publisher: "Lantern Editions",
-    year: 2023,
+    bookId: "BK-1003",
+    title: "Introduction to Linear Algebra",
+    authors: "Gilbert Strang",
+    category: "Mathematics",
+    isbn13: "978-0980232776",
+    isbn10: "0980232775",
+    type: "Physical",
+    publisher: "Wellesley-Cambridge Press",
+    year: 2016,
     language: "English",
-    pages: 198,
-    callNumber: "N72 .R36 2023",
-    copiesAvailable: 2,
+    pages: 600,
+    callNumber: "QA184 .S8 2016",
+    copiesAvailable: 5,
+    copiesTotal: 5,
+    summary: "An authoritative and accessible introduction to linear algebra, emphasizing matrix theory, vector space fundamentals, and practical applications across computational science and engineering.",
+    keywords: ["Linear Algebra", "Matrices", "Determinants", "Vector Spaces", "Eigenvalues", "Eigenvectors", "Singular Value Decomposition"],
+    cover: coverIntroductionToLinearAlgebra,
+    location: "Shelf C / Rack 1",
+  },
+  {
+    bookId: "BK-1004",
+    title: "Sapiens: A Brief History of Humankind",
+    authors: "Yuval Noah Harari",
+    category: "History",
+    isbn13: "978-0062316097",
+    isbn10: "0062316095",
+    type: "Physical",
+    publisher: "Harper",
+    year: 2015,
+    language: "English",
+    pages: 464,
+    callNumber: "CB25 .H37 2015",
+    copiesAvailable: 4,
+    copiesTotal: 4,
+    summary: "A groundbreaking survey of human history exploring how Homo sapiens evolved from an insignificant ape species into the dominant force on Earth through shared myths, commerce, and scientific innovation.",
+    keywords: ["Human History", "Cognitive Revolution", "Agricultural Revolution", "Scientific Revolution", "Homo Sapiens", "Anthropology"],
+    cover: coverSapiens,
+    location: "Shelf D / Rack 3",
+  },
+  {
+    bookId: "BK-1005",
+    title: "The Story of Art",
+    authors: "E. H. Gombrich",
+    category: "Art",
+    isbn13: "978-0714872025",
+    isbn10: "071487202X",
+    type: "Physical",
+    publisher: "Phaidon Press",
+    year: 2016,
+    language: "English",
+    pages: 1048,
+    callNumber: "N5300 .G64 2016",
+    copiesAvailable: 3,
     copiesTotal: 3,
-    summary: "Visual essays on the intersection of drawing and machine cognition.",
-    keywords: ["art", "visual essay", "AI"],
-    cover: coverIntelligenceIllustrated,
-
-    fileFormat: "EPUB",
-    maxConcurrent: 3,
+    summary: "A masterwork of art history introducing readers to the evolution of visual arts, from ancient cave paintings to modern movements, with detailed analysis of technique, style, and cultural influence.",
+    keywords: ["Art History", "World Art", "Visual Arts", "Art Movements", "Renaissance", "Painting", "Sculpture", "Architecture"],
+    cover: coverTheStoryOfArt,
+    location: "Shelf E / Rack 1",
   },
   {
     bookId: "BK-1006",
-    title: "Coastal Ecology Handbook",
-    authors: "Teresa Uy",
-    category: "Science",
-    isbn13: "978-0393609394",
-    isbn10: "0393609391",
+    title: "Calculus: Early Transcendentals",
+    authors: "James Stewart",
+    category: "Mathematics",
+    isbn13: "978-1285741550",
+    isbn10: "1285741552",
     type: "Physical",
-    publisher: "Northfield Press",
-    year: 2018,
+    publisher: "Cengage Learning",
+    year: 2016,
     language: "English",
-    pages: 386,
-    callNumber: "QH541.5 .U9 2018",
-    copiesAvailable: 1,
-    copiesTotal: 5,
-    summary: "Reference guide for mangrove, reef and estuary field work.",
-    keywords: ["ecology", "marine", "handbook"],
-    cover: coverCoastalEcology,
-
-    location: "Shelf D / Rack 4",
+    pages: 1368,
+    callNumber: "QA303.2 .S74 2016",
+    copiesAvailable: 3,
+    copiesTotal: 6,
+    summary: "Comprehensive guide covering limits, derivatives, integrals, and vector calculus applications.",
+    keywords: ["calculus", "mathematics", "functions"],
+    cover: coverCalculusStewart,
+    location: "Shelf C / Rack 2",
   },
+  {
+    bookId: "BK-1007",
+    title: "Bananas",
+    authors: "R.H. Stover and N.W. Simmonds",
+    category: "Agriculture",
+    isbn13: "978-0470206843",
+    isbn10: "0470206845",
+    type: "Physical",
+    publisher: "Wiley",
+    year: 1987,
+    language: "English",
+    pages: 500,
+    callNumber: "SB379.B2 S76 1987",
+    copiesAvailable: 1,
+    copiesTotal: 2,
+    summary: "Authoritative reference covering banana botany, cultivation systems, crop diseases, and plantation management.",
+    keywords: ["agriculture", "botany", "crops", "bananas"],
+    cover: coverBananasStover,
+    location: "Shelf A / Rack 3",
+  },
+  {
+    bookId: "BK-1008",
+    title: "Harry Potter and the Sorcerer's Stone",
+    authors: "J.K. Rowling",
+    category: "Fiction",
+    isbn13: "978-0590353403",
+    isbn10: "0590353403",
+    type: "Physical",
+    publisher: "Arthur A. Levine Books",
+    year: 1998,
+    language: "English",
+    pages: 320,
+    callNumber: "PZ7.R7983 Ha 1998",
+    copiesAvailable: 5,
+    copiesTotal: 10,
+    summary: "An orphaned boy discovers he is a wizard and begins his education at Hogwarts School of Witchcraft and Wizardry.",
+    keywords: ["fantasy", "magic", "fiction", "wizardry"],
+    cover: coverHarryPotter1,
+    location: "Shelf B / Rack 4",
+  },
+  {
+    bookId: "BK-2001",
+    title: "A Brief History of Time",
+    authors: "Stephen Hawking",
+    category: "Science",
+    isbn13: "978-0553109535",
+    isbn10: "0553109537",
+    type: "Digital",
+    publisher: "Bantam",
+    year: 1988,
+    language: "English",
+    pages: 212,
+    callNumber: "QB981 .H377 1988 EB",
+    copiesAvailable: 7,
+    copiesTotal: 10,
+    summary: "Landmark exploration of cosmology, black holes, the big bang, and the fundamental laws governing the universe.",
+    keywords: ["cosmology", "physics", "astronomy"],
+    cover: coverBriefHistoryTime,
+    fileFormat: "EPUB",
+    maxConcurrent: 10,
+  },
+  {
+    bookId: "BK-2002",
+    title: "Designing Data-Intensive Applications",
+    authors: "Martin Kleppmann",
+    category: "Technology",
+    isbn13: "978-1449373320",
+    isbn10: "1449373321",
+    type: "Digital",
+    publisher: "O'Reilly Media",
+    year: 2017,
+    language: "English",
+    pages: 614,
+    callNumber: "QA76.9.D3 K54 2017 EB",
+    copiesAvailable: 10,
+    copiesTotal: 10,
+    summary: "Comprehensive guide to the core ideas and trade-offs behind reliable, scalable, and maintainable distributed data systems.",
+    keywords: ["databases", "distributed-systems", "architecture"],
+    cover: coverDesigningDataIntensive,
+    fileFormat: "PDF",
+    maxConcurrent: 10,
+  }
 ];
 
 export type Member = {
-  studentId: string;
+  userId: string;
   firstName: string;
   lastName: string;
   email: string;
   phone: string;
   department: string;
   yearLevel: string;
-  membershipType: "Standard" | "Faculty" | "Guest";
+  membershipType: "User" | "Admin";
   maxBooks: number;
   joinDate: string;
   expiryDate: string;
@@ -186,14 +274,14 @@ export type Member = {
 
 export const members: Member[] = [
   {
-    studentId: "2023-00145",
+    userId: "2023-00145",
     firstName: "Andrea",
     lastName: "Villanueva",
     email: "andrea.v@bai.edu",
     phone: "+63 917 220 1145",
     department: "BS Computer Science",
     yearLevel: "3rd Year",
-    membershipType: "Standard",
+    membershipType: "User",
     maxBooks: 5,
     joinDate: "2023-08-14",
     expiryDate: "2027-06-30",
@@ -202,14 +290,14 @@ export const members: Member[] = [
     finesOwed: 0,
   },
   {
-    studentId: "2022-00871",
+    userId: "2022-00871",
     firstName: "Miguel",
     lastName: "Santos",
     email: "miguel.s@bai.edu",
     phone: "+63 918 441 8871",
     department: "BS Agriculture",
     yearLevel: "4th Year",
-    membershipType: "Standard",
+    membershipType: "User",
     maxBooks: 5,
     joinDate: "2022-08-02",
     expiryDate: "2026-06-30",
@@ -218,14 +306,14 @@ export const members: Member[] = [
     finesOwed: 0,
   },
   {
-    studentId: "2021-00320",
+    userId: "2021-00320",
     firstName: "Cheska",
     lastName: "Domingo",
     email: "cheska.d@bai.edu",
     phone: "+63 905 118 0320",
     department: "BA History",
     yearLevel: "4th Year",
-    membershipType: "Standard",
+    membershipType: "User",
     maxBooks: 5,
     joinDate: "2021-07-19",
     expiryDate: "2025-06-30",
@@ -234,14 +322,14 @@ export const members: Member[] = [
     finesOwed: 12.5,
   },
   {
-    studentId: "FAC-00042",
+    userId: "FAC-00042",
     firstName: "Dr. Rowena",
     lastName: "Lacsina",
     email: "r.lacsina@bai.edu",
     phone: "+63 920 774 0042",
     department: "College of Science",
     yearLevel: "Faculty",
-    membershipType: "Faculty",
+    membershipType: "Admin",
     maxBooks: 10,
     joinDate: "2016-01-11",
     expiryDate: "2030-12-31",
@@ -250,42 +338,26 @@ export const members: Member[] = [
     finesOwed: 0,
   },
   {
-    studentId: "2024-01099",
+    userId: "2024-01099",
     firstName: "Paolo",
     lastName: "Reyes",
     email: "paolo.r@bai.edu",
     phone: "+63 926 330 1099",
     department: "BS Mathematics",
     yearLevel: "1st Year",
-    membershipType: "Standard",
+    membershipType: "User",
     maxBooks: 5,
     joinDate: "2024-08-05",
     expiryDate: "2028-06-30",
     status: "Active",
     booksOut: 1,
     finesOwed: 3.5,
-  },
-  {
-    studentId: "GST-00007",
-    firstName: "Liza",
-    lastName: "Fontanilla",
-    email: "liza.f@guest.bai.edu",
-    phone: "+63 917 000 0007",
-    department: "Community Guest",
-    yearLevel: "—",
-    membershipType: "Guest",
-    maxBooks: 2,
-    joinDate: "2026-02-01",
-    expiryDate: "2026-08-01",
-    status: "Active",
-    booksOut: 0,
-    finesOwed: 0,
-  },
+  }
 ];
 
 export type Loan = {
   issueId: string;
-  studentId: string;
+  userId: string;
   studentName: string;
   bookTitle: string;
   assetType: AssetType;
@@ -296,14 +368,16 @@ export type Loan = {
   status: "Issued" | "Overdue" | "Returned";
 };
 
+
+// TO EDIT
 export const loans: Loan[] = [
   {
     issueId: "ISS-5001",
-    studentId: "2023-00145",
+    userId: "2023-00145",
     studentName: "Andrea Villanueva",
-    bookTitle: "The Art of Quiet Machines",
+    bookTitle: "Modern Operating Systems",
     assetType: "Physical",
-    copyId: "BC-1001-002",
+    copyId: "BK-1001-002",
     issueDate: "2026-08-20",
     dueDate: "2026-09-03",
     returnDate: null,
@@ -311,11 +385,11 @@ export const loans: Loan[] = [
   },
   {
     issueId: "ISS-5002",
-    studentId: "2023-00145",
+    userId: "2023-00145",
     studentName: "Andrea Villanueva",
-    bookTitle: "Foundations of Discrete Thought",
+    bookTitle: "A Brief History of Time",
     assetType: "Digital",
-    copyId: "EB-1003",
+    copyId: "BK-2001",
     issueDate: "2026-08-25",
     dueDate: "2026-09-08",
     returnDate: null,
@@ -323,11 +397,11 @@ export const loans: Loan[] = [
   },
   {
     issueId: "ISS-5003",
-    studentId: "2021-00320",
+    userId: "2021-00320",
     studentName: "Cheska Domingo",
-    bookTitle: "Municipal Records and Civic Memory",
+    bookTitle: "Introduction to Linear Algebra",
     assetType: "Physical",
-    copyId: "BC-1004-001",
+    copyId: "BK-1003-001",
     issueDate: "2026-07-28",
     dueDate: "2026-08-11",
     returnDate: null,
@@ -335,11 +409,11 @@ export const loans: Loan[] = [
   },
   {
     issueId: "ISS-5004",
-    studentId: "2022-00871",
+    userId: "2022-00871",
     studentName: "Miguel Santos",
-    bookTitle: "Banana Groves of the Archipelago",
+    bookTitle: "Bananas",
     assetType: "Physical",
-    copyId: "BC-1002-003",
+    copyId: "BK-1007-003",
     issueDate: "2026-08-12",
     dueDate: "2026-08-26",
     returnDate: null,
@@ -347,11 +421,11 @@ export const loans: Loan[] = [
   },
   {
     issueId: "ISS-5005",
-    studentId: "FAC-00042",
+    userId: "FAC-00042",
     studentName: "Dr. Rowena Lacsina",
-    bookTitle: "Coastal Ecology Handbook",
+    bookTitle: "Calculus: Early Transcendentals",
     assetType: "Physical",
-    copyId: "BC-1006-004",
+    copyId: "BK-1006-004",
     issueDate: "2026-08-24",
     dueDate: "2026-09-07",
     returnDate: null,
@@ -359,11 +433,11 @@ export const loans: Loan[] = [
   },
   {
     issueId: "ISS-4870",
-    studentId: "2023-00145",
+    userId: "2023-00145",
     studentName: "Andrea Villanueva",
-    bookTitle: "Intelligence, Illustrated",
+    bookTitle: "Designing Data-Intensive Applications",
     assetType: "Digital",
-    copyId: "EB-1005",
+    copyId: "BK-2002",
     issueDate: "2026-06-10",
     dueDate: "2026-06-24",
     returnDate: "2026-06-21",
@@ -371,11 +445,11 @@ export const loans: Loan[] = [
   },
   {
     issueId: "ISS-4712",
-    studentId: "2023-00145",
+    userId: "2023-00145",
     studentName: "Andrea Villanueva",
-    bookTitle: "Coastal Ecology Handbook",
+    bookTitle: "It Ends with Us",
     assetType: "Physical",
-    copyId: "BC-1006-002",
+    copyId: "BK-1002-002",
     issueDate: "2026-04-02",
     dueDate: "2026-04-16",
     returnDate: "2026-04-23",
@@ -386,7 +460,7 @@ export const loans: Loan[] = [
 export type Fine = {
   fineId: string;
   issueId: string;
-  studentId: string;
+  userId: string;
   studentName: string;
   bookTitle: string;
   daysLate: number;
@@ -396,13 +470,15 @@ export type Fine = {
   paidDate: string | null;
 };
 
+
+// TO EDIT
 export const fines: Fine[] = [
   {
     fineId: "FN-3001",
     issueId: "ISS-5003",
-    studentId: "2021-00320",
+    userId: "2021-00320",
     studentName: "Cheska Domingo",
-    bookTitle: "Municipal Records and Civic Memory",
+    bookTitle: "Introduction to Linear Algebra",
     daysLate: 25,
     ratePerDay: FINE_RATE_PER_DAY,
     amount: 12.5,
@@ -412,9 +488,9 @@ export const fines: Fine[] = [
   {
     fineId: "FN-3002",
     issueId: "ISS-4712",
-    studentId: "2023-00145",
+    userId: "2023-00145",
     studentName: "Andrea Villanueva",
-    bookTitle: "Coastal Ecology Handbook",
+    bookTitle: "It Ends with Us",
     daysLate: 7,
     ratePerDay: FINE_RATE_PER_DAY,
     amount: 3.5,
@@ -424,9 +500,9 @@ export const fines: Fine[] = [
   {
     fineId: "FN-3003",
     issueId: "ISS-4655",
-    studentId: "2024-01099",
+    userId: "2024-01099",
     studentName: "Paolo Reyes",
-    bookTitle: "Foundations of Discrete Thought",
+    bookTitle: "Calculus: Early Transcendentals",
     daysLate: 7,
     ratePerDay: FINE_RATE_PER_DAY,
     amount: 3.5,
@@ -436,20 +512,36 @@ export const fines: Fine[] = [
 ];
 
 export const categories = [
-  "Computer Science",
   "Agriculture",
-  "Mathematics",
-  "History",
   "Art",
+  "Fiction",
+  "History",
+  "Mathematics",
   "Science",
+  "Technology",
 ];
 
 export const locations = [
   "Shelf A / Rack 1",
+  "Shelf A / Rack 2",
   "Shelf A / Rack 3",
+  "Shelf A / Rack 4",
+  "Shelf A / Rack 5",
+  "Shelf B / Rack 1",
   "Shelf B / Rack 2",
+  "Shelf B / Rack 3",
+  "Shelf B / Rack 4",
+  "Shelf B / Rack 5",
   "Shelf C / Rack 1",
+  "Shelf C / Rack 2",
+  "Shelf C / Rack 3",
+  "Shelf C / Rack 4",
+  "Shelf C / Rack 5",
+  "Shelf D / Rack 1",
+  "Shelf D / Rack 2",
+  "Shelf D / Rack 3",
   "Shelf D / Rack 4",
+  "Shelf D / Rack 5"
 ];
 
 export const kpis = {
@@ -472,17 +564,17 @@ export const loansTrend = [
 ];
 
 export const popularTitles = [
-  { title: "Quiet Machines", loans: 62 },
-  { title: "Banana Groves", loans: 54 },
-  { title: "Discrete Thought", loans: 47 },
-  { title: "Civic Memory", loans: 33 },
-  { title: "Coastal Ecology", loans: 29 },
+  { title: "Modern Operating Systems", loans: 62 },
+  { title: "Calculus: Early Transcendentals", loans: 54 },
+  { title: "Sapiens: A Brief History of Humankind", loans: 47 },
+  { title: "It Ends with Us", loans: 33 },
+  { title: "Bananas", loans: 29 },
 ];
 
 export const currentStudent = members[0]!;
 
 export const notifications = [
-  { id: 1, text: "Banana Groves of the Archipelago is overdue by 5 days.", tone: "danger" },
-  { id: 2, text: "The Art of Quiet Machines is due in 3 days.", tone: "warning" },
-  { id: 3, text: "Reserve request approved: Intelligence, Illustrated.", tone: "success" },
+  { id: 1, text: "Bananas is overdue by 5 days.", tone: "danger" },
+  { id: 2, text: "Modern Operating Systems is due in 3 days.", tone: "warning" },
+  { id: 3, text: "Reserve request approved: Calculus: Early Transcendentals.", tone: "success" },
 ];

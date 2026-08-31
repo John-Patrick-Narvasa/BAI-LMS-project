@@ -59,7 +59,6 @@ function BooksPage() {
   );
 }
 
-// TO EDIT
 function CatalogTab() {
   const [category, setCategory] = useState("All");
   const [type, setType] = useState("All");
@@ -109,6 +108,7 @@ function CatalogTab() {
           <table className="w-full text-sm">
             <thead className="bg-secondary text-left text-xs font-semibold text-secondary-foreground uppercase">
               <tr>
+                <th className="px-4 py-2.5">Cover</th>
                 <th className="px-4 py-2.5">Title</th>
                 <th className="px-4 py-2.5">Author(s)</th>
                 <th className="px-4 py-2.5">Category</th>
@@ -125,6 +125,13 @@ function CatalogTab() {
                   onClick={() => setSelected(b)}
                   className="cursor-pointer hover:bg-secondary/60"
                 >
+                  <td className="px-4 py-2">
+                    <img
+                      src={b.cover}
+                      alt={b.title}
+                      className="h-12 w-9 rounded object-cover shadow-sm"
+                    />
+                  </td>
                   <td className="px-4 py-3 font-semibold">{b.title}</td>
                   <td className="px-4 py-3">{b.authors}</td>
                   <td className="px-4 py-3">{b.category}</td>
@@ -152,6 +159,13 @@ function CatalogTab() {
           {selected ? (
             <>
               <SheetHeader>
+                <div className="mb-3 flex justify-center">
+                  <img
+                    src={selected.cover}
+                    alt={selected.title}
+                    className="h-44 w-32 rounded-md object-cover shadow-md"
+                  />
+                </div>
                 <SheetTitle>{selected.title}</SheetTitle>
                 <SheetDescription>{selected.authors}</SheetDescription>
               </SheetHeader>
@@ -216,10 +230,10 @@ const wizardSteps = [
 
 function EntryWizard() {
   const [step, setStep] = useState(0);
-  const [isbn, setIsbn] = useState("");
+  const [isbn, setIsbn] = useState("978-1501110368");
   const [exists, setExists] = useState(false);
   const [assetType, setAssetType] = useState<"Physical" | "Digital">("Physical");
-  const [quantity, setQuantity] = useState(3);
+  const [quantity, setQuantity] = useState(5);
   const [done, setDone] = useState(false);
 
   const match = books.find((b) => b.isbn13 === isbn.trim() || b.isbn10 === isbn.trim());
@@ -263,7 +277,7 @@ function EntryWizard() {
             <TextInput
               value={isbn}
               onChange={(e) => setIsbn(e.target.value)}
-              placeholder="e.g. 978-0132350884"
+              placeholder="e.g. 978-1501110368"
             />
           </Field>
           {isbn.trim() ? (
@@ -309,10 +323,10 @@ function EntryWizard() {
           <h2 className="font-bold">Step 2 — Core info sheet</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Title">
-              <TextInput defaultValue="Field Notes on Machine Botany" />
+              <TextInput defaultValue="It Ends with Us" />
             </Field>
             <Field label="Author(s)">
-              <TextInput defaultValue="Aurora Belmonte, Kai Tanaka" />
+              <TextInput defaultValue="Colleen Hoover" />
             </Field>
             <Field label="Category">
               <SelectInput defaultValue="Science">
@@ -322,17 +336,17 @@ function EntryWizard() {
               </SelectInput>
             </Field>
             <Field label="Keywords (comma separated)">
-              <TextInput defaultValue="botany, machine learning, field guide" />
+              <TextInput defaultValue="Contemporary Fiction, Romance, Drama, Relationships, Domestic Violence, Resilience" />
             </Field>
           </div>
           <Field label="Summary">
-            <TextArea defaultValue="A field companion pairing plant taxonomy with computer-vision identification techniques." />
+            <TextArea defaultValue="A deeply personal story following Lily Bloom as she navigates a complex romantic relationship while confronting childhood trauma and difficult choices regarding cycle-breaking and emotional boundaries." />
           </Field>
           <Field label="Cover image">
             <div className="flex items-center gap-3 rounded-md border border-dashed border-input p-4">
               <div className="h-16 w-12 rounded bg-[color-mix(in_srgb,var(--primary-green)_18%,white)]" />
               <div className="text-sm text-muted-foreground">
-                cover-machine-botany.jpg · 240 KB
+                it_ends_with_us_cover.jpg · 240 KB
               </div>
               <GhostButton className="ml-auto">Replace</GhostButton>
             </div>
@@ -346,13 +360,13 @@ function EntryWizard() {
           <h2 className="font-bold">Step 3 — Edition info sheet</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Edition number">
-              <TextInput defaultValue="2" />
+              <TextInput defaultValue="1" />
             </Field>
             <Field label="Publisher">
-              <TextInput defaultValue="Isla Verde Publishing" />
+              <TextInput defaultValue="Atria Books" />
             </Field>
             <Field label="Publication year">
-              <TextInput defaultValue="2026" />
+              <TextInput defaultValue="2016" />
             </Field>
             <Field label="Language">
               <SelectInput defaultValue="English">
@@ -362,13 +376,13 @@ function EntryWizard() {
               </SelectInput>
             </Field>
             <Field label="Page count">
-              <TextInput defaultValue="368" />
+              <TextInput defaultValue="384" />
             </Field>
             <Field label="Call number">
-              <TextInput defaultValue="QK50 .B45 2026" />
+              <TextInput defaultValue="PS3608.O623 I84 2016" />
             </Field>
             <Field label="Price cost (per unit)">
-              <TextInput defaultValue="42.00" />
+              <TextInput defaultValue="16.99" />
             </Field>
             <Field label="Asset type">
               <SelectInput
@@ -416,14 +430,14 @@ function EntryWizard() {
                 />
               </Field>
               <Field label="Format">
-                <SelectInput defaultValue="Hardcover">
+                <SelectInput defaultValue="Paperback">
                   <option>Hardcover</option>
                   <option>Paperback</option>
                   <option>Spiral</option>
                 </SelectInput>
               </Field>
               <Field label="Location (shelf / rack)">
-                <SelectInput defaultValue={locations[1]}>
+                <SelectInput defaultValue="Main Library - Shelf B2">
                   {locations.map((l) => (
                     <option key={l}>{l}</option>
                   ))}
@@ -436,17 +450,17 @@ function EntryWizard() {
                 </SelectInput>
               </Field>
               <Field label="Condition (default)">
-                <SelectInput defaultValue="New">
+                <SelectInput defaultValue="Good">
                   <option>New</option>
                   <option>Good</option>
                   <option>Fair</option>
                 </SelectInput>
               </Field>
               <Field label="Replacement cost">
-                <TextInput defaultValue="55.00" />
+                <TextInput defaultValue="16.99" />
               </Field>
               <Field label="Procurement record (optional)">
-                <TextInput defaultValue="PR-2026-0042 · Isla Verde Supply" />
+                <TextInput defaultValue="PR-2026-FIC-082" />
               </Field>
               <Field label="Accession range (auto)">
                 <TextInput readOnly value={`ACC-77${101} – ACC-77${100 + quantity}`} />
@@ -465,7 +479,7 @@ function EntryWizard() {
                 </SelectInput>
               </Field>
               <Field label="Access URL">
-                <TextInput defaultValue="https://ebooks.bai.edu/machine-botany" />
+                <TextInput defaultValue="https://ebooks.bai.edu/it-ends-with-us" />
               </Field>
               <Field label="File size (MB)">
                 <TextInput defaultValue="18.4" />
@@ -488,7 +502,7 @@ function EntryWizard() {
                 </SelectInput>
               </Field>
               <Field label="Procurement record (optional)">
-                <TextInput defaultValue="PR-2026-0043 · Acacia Digital" />
+                <TextInput defaultValue="PR-2026-FIC-082" />
               </Field>
             </div>
           )}
@@ -500,20 +514,34 @@ function EntryWizard() {
         <div className="card-surface space-y-4 p-5">
           <h2 className="font-bold">Step 5 — Review & finalize</h2>
           <div className="flex flex-col gap-4 sm:flex-row">
-            <div className="h-40 w-28 shrink-0 rounded-md bg-[color-mix(in_srgb,var(--primary-green)_18%,white)]" />
+            <div className="h-40 w-28 shrink-0 overflow-hidden rounded-md border bg-[color-mix(in_srgb,var(--primary-green)_18%,white)] shadow-sm">
+              {exists && match?.cover ? (
+                <img
+                  src={match.cover}
+                  alt={match.title}
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center p-2 text-center text-xs text-muted-foreground">
+                  New Entry Preview
+                </div>
+              )}
+            </div>
             <div className="grid flex-1 gap-3 sm:grid-cols-2">
               <Field label="Title">
                 <TextInput
                   defaultValue={
-                    exists ? (match?.title ?? "") : "Field Notes on Machine Botany"
+                    exists ? (match?.title ?? "") : "It Ends with Us"
                   }
                 />
               </Field>
               <Field label="Category">
-                <TextInput defaultValue={exists ? (match?.category ?? "") : "Science"} />
+                <TextInput
+                  defaultValue={exists ? (match?.category ?? "") : "Science"}
+                />
               </Field>
               <Field label="Edition / Year">
-                <TextInput defaultValue="2nd · 2026" />
+                <TextInput defaultValue="1st · 2016" />
               </Field>
               <Field label="Asset type">
                 <TextInput readOnly value={assetType} />
@@ -531,7 +559,11 @@ function EntryWizard() {
               <Field label={assetType === "Physical" ? "Location" : "Max concurrent"}>
                 <TextInput
                   readOnly
-                  value={assetType === "Physical" ? (locations[1] ?? "") : "6"}
+                  value={
+                    assetType === "Physical"
+                      ? "Main Library - Shelf B2"
+                      : "6"
+                  }
                 />
               </Field>
             </div>
