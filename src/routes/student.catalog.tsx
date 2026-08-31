@@ -196,10 +196,10 @@ function StudentCatalog() {
               ["ISBN-13", selected.isbn13],
               ["Status", available ? "Available" : "Out of Stock"],
               [
-                "Shelf / Access",
+                selected.type === "Physical" ? "Location" : "File Format",
                 selected.type === "Physical"
                   ? (selected.location ?? selected.callNumber)
-                  : `${selected.fileFormat ?? "PDF"} · ${selected.maxConcurrent ?? 0} slots`,
+                  : `${selected.fileFormat ?? "PDF"} (${selected.maxConcurrent ?? 0} slots)`,
               ],
             ].map(([k, v]) => (
               <div key={k} className="flex items-start justify-between gap-3 py-2">

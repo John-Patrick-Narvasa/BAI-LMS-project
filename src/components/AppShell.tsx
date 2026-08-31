@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Bell, ChevronDown, LogOut, Search, User } from "lucide-react";
+import { Bell, ChevronDown, LogOut, User } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { Logo } from "@/components/Logo";
@@ -19,11 +19,12 @@ import { cn } from "@/lib/utils";
 
 type NavItem = { label: string; to: string };
 
+// TO EDIT
 const adminNav: NavItem[] = [
-  { label: "Dashboard", to: "/admin/dashboard" },
+  // { label: "Dashboard", to: "/admin/dashboard" },
   { label: "Books", to: "/admin/books" },
-  { label: "Members", to: "/admin/members" },
-  { label: "Circulation", to: "/admin/circulation" },
+  // { label: "Members", to: "/admin/members" },
+  // { label: "Circulation", to: "/admin/circulation" },
 ];
 
 const studentNav: NavItem[] = [
@@ -46,7 +47,7 @@ export function AppShell({
 }) {
   const nav = role === "admin" ? adminNav : studentNav;
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const who = role === "admin" ? "M. Fajardo · Admin" : "Andrea Villanueva · Student";
+  const who = role === "admin" ? "L. Laureta · Admin" : "Natheniel Ellacer · Student";
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -60,61 +61,51 @@ export function AppShell({
             </span>
           </Link>
 
-          <div className="relative ml-2 flex-1 max-w-xl">
-            <Search className="pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 opacity-70" />
-            <input
-              type="search"
-              placeholder={
-                role === "admin"
-                  ? "Search books, students, records…"
-                  : "Search the catalog…"
-              }
-              className="h-10 w-full rounded-md border border-white/20 bg-white/10 pl-9 pr-3 text-sm text-primary-foreground placeholder:text-white/60 focus:border-[var(--banana-gold)] focus:outline-none"
-            />
+          {/* HIGHLIGHT: Search bar removed and ml-auto added to anchor icons at the rightmost edge */}
+          <div className="ml-auto flex items-center gap-2">
+            <Popover>
+              <PopoverTrigger className="relative rounded-md p-2 hover:bg-white/10">
+                <Bell className="h-5 w-5" />
+                <span className="absolute -top-0.5 -right-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-[var(--banana-gold)] px-1 text-[11px] font-bold text-[var(--charcoal-text)]">
+                  {notifications.length}
+                </span>
+              </PopoverTrigger>
+              <PopoverContent align="end" className="w-80 p-0">
+                <p className="border-b border-border px-4 py-2.5 text-sm font-semibold">
+                  Notifications
+                </p>
+                <ul className="divide-y divide-border">
+                  {notifications.map((n) => (
+                    <li key={n.id} className="px-4 py-3 text-sm text-foreground">
+                      {n.text}
+                    </li>
+                  ))}
+                </ul>
+              </PopoverContent>
+            </Popover>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center gap-2 rounded-md p-1.5 hover:bg-white/10">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--banana-gold)] text-sm font-bold text-[var(--charcoal-text)]">
+                  {role === "admin" ? "LL" : "NE"}
+                </span>
+                <ChevronDown className="hidden h-4 w-4 sm:block" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <p className="px-2 py-1.5 text-xs text-muted-foreground">{who}</p>
+                <DropdownMenuItem asChild>
+                  <Link to={role === "admin" ? "/admin/dashboard" : "/student/profile"}>
+                    <User className="mr-2 h-4 w-4" /> Profile
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/">
+                    <LogOut className="mr-2 h-4 w-4" /> Log out
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
-
-          <Popover>
-            <PopoverTrigger className="relative rounded-md p-2 hover:bg-white/10">
-              <Bell className="h-5 w-5" />
-              <span className="absolute -top-0.5 -right-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-[var(--banana-gold)] px-1 text-[11px] font-bold text-[var(--charcoal-text)]">
-                {notifications.length}
-              </span>
-            </PopoverTrigger>
-            <PopoverContent align="end" className="w-80 p-0">
-              <p className="border-b border-border px-4 py-2.5 text-sm font-semibold">
-                Notifications
-              </p>
-              <ul className="divide-y divide-border">
-                {notifications.map((n) => (
-                  <li key={n.id} className="px-4 py-3 text-sm text-foreground">
-                    {n.text}
-                  </li>
-                ))}
-              </ul>
-            </PopoverContent>
-          </Popover>
-
-          <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-2 rounded-md p-1.5 hover:bg-white/10">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--banana-gold)] text-sm font-bold text-[var(--charcoal-text)]">
-                {role === "admin" ? "MF" : "AV"}
-              </span>
-              <ChevronDown className="hidden h-4 w-4 sm:block" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
-              <p className="px-2 py-1.5 text-xs text-muted-foreground">{who}</p>
-              <DropdownMenuItem asChild>
-                <Link to={role === "admin" ? "/admin/dashboard" : "/student/profile"}>
-                  <User className="mr-2 h-4 w-4" /> Profile
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link to="/">
-                  <LogOut className="mr-2 h-4 w-4" /> Log out
-                </Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
         </div>
       </header>
 
@@ -174,13 +165,11 @@ export function AppShell({
       <footer className="bg-primary text-primary-foreground">
         <div className="flex flex-col gap-2 px-4 py-4 text-xs md:flex-row md:items-center md:justify-between md:px-8">
           <p className="font-semibold">
-            Archives · Books of Art and Intelligence
+            Books of Art and Intelligence
           </p>
-          <p className="opacity-85">Mon–Sat, 8:00 AM – 7:00 PM</p>
+          <p className="opacity-85">&copy; 2026 BAI Archives. All rights reserved.</p>
           <div className="flex gap-4 opacity-85">
-            <Link to={role === "admin" ? "/admin/books" : "/student/catalog"}>Catalog</Link>
-            <span>Help</span>
-            <span>Privacy</span>
+            {/* <Link to={role === "admin" ? "/admin/books" : "/student/catalog"}>Catalog</Link> */}
           </div>
         </div>
       </footer>
