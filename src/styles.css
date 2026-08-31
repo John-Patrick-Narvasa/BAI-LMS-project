@@ -1,0 +1,132 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * BAI Archives design system — Leafy Green / Banana Tree theme.
+ * All colors defined once here as semantic tokens.
+ */
+
+@theme inline {
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+
+  --font-sans: var(--font-institutional);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-leaf: var(--leaf-green);
+  --color-gold: var(--banana-gold);
+  --color-maroon: var(--maroon);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+
+  --color-chart-1: var(--primary-green);
+  --color-chart-2: var(--banana-gold);
+  --color-chart-3: var(--leaf-green);
+  --color-chart-4: var(--maroon);
+  --color-chart-5: var(--muted-text);
+
+  --shadow-card: 0 2px 8px rgba(31, 91, 52, 0.08);
+  --shadow-raised: 0 6px 20px rgba(31, 91, 52, 0.12);
+}
+
+:root {
+  --radius: 8px;
+  --font-institutional:
+    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Brand palette (exact hex per spec) */
+  --primary-green: #1f5b34;
+  --leaf-green: #3f7d4e;
+  --banana-gold: #e8b923;
+  --maroon: #7a2131;
+  --cream-bg: #faf7f0;
+  --charcoal-text: #1c2a1e;
+  --muted-text: #6b7280;
+  --success: #3f7d4e;
+  --warning: #e8b923;
+  --danger: #7a2131;
+
+  /* Semantic mapping */
+  --background: var(--cream-bg);
+  --foreground: var(--charcoal-text);
+  --card: #ffffff;
+  --card-foreground: var(--charcoal-text);
+  --popover: #ffffff;
+  --popover-foreground: var(--charcoal-text);
+  --primary: var(--primary-green);
+  --primary-foreground: #ffffff;
+  --secondary: #eef3ec;
+  --secondary-foreground: var(--primary-green);
+  --muted: #f2f0e8;
+  --muted-foreground: var(--muted-text);
+  --accent: var(--banana-gold);
+  --accent-foreground: var(--charcoal-text);
+  --destructive: var(--maroon);
+  --destructive-foreground: #ffffff;
+  --border: #e3e0d5;
+  --input: #d9d6ca;
+  --ring: var(--leaf-green);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-institutional);
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.01em;
+  }
+}
+
+@utility card-surface {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-card);
+}
+
+@utility leaf-pattern {
+  background-color: var(--cream-bg);
+  background-image:
+    radial-gradient(circle at 12% 22%, rgba(63, 125, 78, 0.09) 0 22%, transparent 23%),
+    radial-gradient(circle at 78% 12%, rgba(63, 125, 78, 0.07) 0 18%, transparent 19%),
+    repeating-linear-gradient(
+      115deg,
+      rgba(63, 125, 78, 0.06) 0 2px,
+      transparent 2px 22px
+    );
+}
