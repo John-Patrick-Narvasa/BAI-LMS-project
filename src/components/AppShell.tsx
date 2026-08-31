@@ -56,7 +56,7 @@ export function AppShell({
             <Logo size={34} />
             <span className="hidden text-lg font-bold tracking-tight sm:inline">
               BAI
-              <span className="ml-2 text-xs font-medium opacity-75">BAI Archives</span>
+              <span className="ml-2 text-xs font-medium opacity-75">Archives LMS</span>
             </span>
           </Link>
 
