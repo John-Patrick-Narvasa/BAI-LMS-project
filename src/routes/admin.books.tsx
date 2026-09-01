@@ -245,6 +245,7 @@ function EntryWizard() {
       "A deeply personal story following Lily Bloom as she navigates a complex romantic relationship while confronting childhood trauma and difficult choices regarding cycle-breaking and emotional boundaries.",
 
     edition: "1",
+    editor: "Brother Bilo",
     publisher: "Atria Books",
     publicationYear: "2016",
     language: "English",
@@ -257,7 +258,8 @@ function EntryWizard() {
     copyStatus: "Available",
     condition: "Good",
     replacementCost: "16.99",
-    procurementRecord: "PR-2026-FIC-082",
+    physicalProcurementRecord: "PR-2026-FIC-082",
+
 
     licensedQuantity: "1",
     fileFormat: "PDF",
@@ -266,6 +268,7 @@ function EntryWizard() {
     maxConcurrent: "6",
     copyrightStatus: "Licensed",
     accessRestrictions: "Campus network only",
+    digitalProcurementRecord: "PR-2026-DIG-082",
   });
 
   const match = books.find((b) => b.isbn13 === isbn.trim() || b.isbn10 === isbn.trim());
@@ -429,7 +432,12 @@ function EntryWizard() {
               />
             </Field>
             <Field label="Editor(s)">
-              <TextInput defaultValue="Brother Bilo" />
+              <TextInput
+                value={bookForm.editor}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, editor: e.target.value })
+                }
+              />
             </Field>
             <Field label="Publisher">
               <TextInput
@@ -520,78 +528,153 @@ function EntryWizard() {
                 />
               </Field>
               <Field label="Format">
-                <SelectInput defaultValue="Paperback">
+                <SelectInput
+                  value={bookForm.format}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, format: e.target.value })
+                  }
+                >
                   <option>Hardcover</option>
                   <option>Paperback</option>
                   <option>Spiral</option>
                 </SelectInput>
               </Field>
               <Field label="Location (shelf / rack)">
-                <SelectInput defaultValue="Main Library - Shelf B2">
+                <SelectInput
+                  value={bookForm.location}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, location: e.target.value })
+                  }
+                >
                   {locations.map((l) => (
                     <option key={l}>{l}</option>
                   ))}
                 </SelectInput>
               </Field>
               <Field label="Copy status (default)">
-                <SelectInput defaultValue="Available">
+                <SelectInput
+                  value={bookForm.copyStatus}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, copyStatus: e.target.value })
+                  }
+                >
                   <option>Available</option>
                   <option>Reserved</option>
                 </SelectInput>
               </Field>
               <Field label="Condition (default)">
-                <SelectInput defaultValue="Good">
+                <SelectInput
+                  value={bookForm.condition}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, condition: e.target.value })
+                  }
+                >
                   <option>New</option>
                   <option>Good</option>
                   <option>Fair</option>
                 </SelectInput>
               </Field>
               <Field label="Replacement cost">
-                <TextInput defaultValue="16.99" />
+                <TextInput
+                  value={bookForm.replacementCost}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, replacementCost: e.target.value })
+                  }
+                />
               </Field>
-              <Field label="Procurement record (optional)">
-                <TextInput defaultValue="PR-2026-FIC-082" />
-              </Field>
-              <Field label="Accession range (auto)">
-                <TextInput readOnly value={`ACC-77${101} – ACC-77${100 + quantity}`} />
-              </Field>
+                <Field label="Procurement record (optional)">
+                  <TextInput
+                    value={bookForm.physicalProcurementRecord}
+                    onChange={(e) =>
+                      setBookForm({
+                        ...bookForm,
+                        physicalProcurementRecord: e.target.value,
+                      })
+                    }
+                  />
+                </Field>
             </div>
           ) : (
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="Licensed quantity">
-                <TextInput defaultValue="1" />
-              </Field>
+            <Field label="Licensed quantity">
+              <TextInput
+                type="number"
+                min={1}
+                value={bookForm.licensedQuantity}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, licensedQuantity: e.target.value })
+                }
+              />
+            </Field>
               <Field label="File format">
-                <SelectInput defaultValue="PDF">
+                <SelectInput
+                  value={bookForm.fileFormat}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, fileFormat: e.target.value })
+                  }
+                >
                   <option>PDF</option>
                   <option>EPUB</option>
                   <option>MOBI</option>
                 </SelectInput>
               </Field>
               <Field label="Access URL">
-                <TextInput defaultValue="https://ebooks.bai.edu/it-ends-with-us" />
+                <TextInput
+                  value={bookForm.accessUrl}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, accessUrl: e.target.value })
+                  }
+                />
               </Field>
               <Field label="File size (MB)">
-                <TextInput defaultValue="18.4" />
+                <TextInput
+                  value={bookForm.fileSize}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, fileSize: e.target.value })
+                  }
+                />
               </Field>
               <Field label="Max concurrent users">
-                <TextInput defaultValue="6" />
+                <TextInput
+                  value={bookForm.maxConcurrent}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, maxConcurrent: e.target.value })
+                  }
+                />
               </Field>
               <Field label="Copyright status">
-                <SelectInput defaultValue="Licensed">
+                <SelectInput
+                  value={bookForm.copyrightStatus}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, copyrightStatus: e.target.value })
+                  }
+                >
                   <option>Licensed</option>
                   <option>Public Domain</option>
                   <option>Open Access</option>
                 </SelectInput>
               </Field>
               <Field label="Access restrictions">
-                <SelectInput defaultValue="Library network only">
+                <SelectInput
+                  value={bookForm.accessRestrictions}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, accessRestrictions: e.target.value })
+                  }
+                >
                   <option>Library network only</option>
                   <option>Unrestricted</option>
                 </SelectInput>
               </Field>
               <Field label="Procurement record (optional)">
-                <TextInput defaultValue="PR-2026-FIC-082" />
+                <TextInput
+                  value={bookForm.digitalProcurementRecord}
+                  onChange={(e) =>
+                    setBookForm({
+                      ...bookForm,
+                      digitalProcurementRecord: e.target.value,
+                    })
+                  }
+                />
               </Field>
             </div>
           )}
@@ -619,18 +702,21 @@ function EntryWizard() {
             <div className="grid flex-1 gap-3 sm:grid-cols-2">
               <Field label="Title">
                 <TextInput
-                  defaultValue={
-                    exists ? (match?.title ?? "") : "It Ends with Us"
-                  }
+                  readOnly
+                  value={bookForm.title}
                 />
               </Field>
               <Field label="Category">
                 <TextInput
-                  defaultValue={exists ? (match?.category ?? "") : "Science"}
+                  readOnly
+                  value={bookForm.category}
                 />
               </Field>
               <Field label="Edition / Year">
-                <TextInput defaultValue="1st · 2016" />
+                <TextInput
+                  readOnly
+                  value={`${bookForm.edition} · ${bookForm.publicationYear}`}
+                />
               </Field>
               <Field label="Asset type">
                 <TextInput readOnly value={assetType} />
@@ -650,8 +736,8 @@ function EntryWizard() {
                   readOnly
                   value={
                     assetType === "Physical"
-                      ? "Shelf D Rack 5"
-                      : "6"
+                      ? bookForm.location
+                      : bookForm.maxConcurrent
                   }
                 />
               </Field>
