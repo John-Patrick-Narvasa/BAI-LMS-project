@@ -47,7 +47,6 @@ function BooksPage() {
     <AppShell
       role="admin"
       title="Books"
-      subtitle="Catalog records, physical copies and digital editions"
     >
       <Tabbed
         tabs={[
@@ -371,6 +370,9 @@ function EntryWizard() {
                 }
               />
             </Field>
+            {/* <Field label="Author(s)">
+              <TextInput defaultValue="Colleen Hoover" />
+            </Field> */}
             <Field label="Category">
                 <SelectInput
                   value={bookForm.category}
@@ -404,9 +406,10 @@ function EntryWizard() {
             <div className="flex items-center gap-3 rounded-md border border-dashed border-input p-4">
               <div className="h-16 w-12 rounded bg-[color-mix(in_srgb,var(--primary-green)_18%,white)]" />
               <div className="text-sm text-muted-foreground">
-                it_ends_with_us_cover.jpg · 240 KB
+                {/* it_ends_with_us_cover.jpg · 240 KB */}
+                Upload an image file
               </div>
-              <GhostButton className="ml-auto">Replace</GhostButton>
+              <GhostButton className="ml-auto">Upload</GhostButton>
             </div>
           </Field>
           <NavRow onBack={() => setStep(0)} onNext={() => setStep(2)} />
@@ -424,6 +427,9 @@ function EntryWizard() {
                   setBookForm({ ...bookForm, edition: e.target.value })
                 }
               />
+            </Field>
+            <Field label="Editor(s)">
+              <TextInput defaultValue="Brother Bilo" />
             </Field>
             <Field label="Publisher">
               <TextInput
@@ -476,15 +482,6 @@ function EntryWizard() {
                   setBookForm({ ...bookForm, price: e.target.value })
                 }
               />
-            </Field>
-            <Field label="Asset type">
-              <SelectInput
-                value={assetType}
-                onChange={(e) => setAssetType(e.target.value as "Physical" | "Digital")}
-              >
-                <option>Physical</option>
-                <option>Digital</option>
-              </SelectInput>
             </Field>
           </div>
           <NavRow onBack={() => setStep(1)} onNext={() => setStep(3)} />
@@ -588,9 +585,8 @@ function EntryWizard() {
                 </SelectInput>
               </Field>
               <Field label="Access restrictions">
-                <SelectInput defaultValue="Campus network only">
-                  <option>Campus network only</option>
-                  <option>Enrolled students only</option>
+                <SelectInput defaultValue="Library network only">
+                  <option>Library network only</option>
                   <option>Unrestricted</option>
                 </SelectInput>
               </Field>
@@ -654,7 +650,7 @@ function EntryWizard() {
                   readOnly
                   value={
                     assetType === "Physical"
-                      ? "Main Library - Shelf B2"
+                      ? "Shelf D Rack 5"
                       : "6"
                   }
                 />

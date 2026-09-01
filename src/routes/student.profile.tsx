@@ -51,7 +51,7 @@ function StudentProfile() {
                   <h2 className="mt-3 text-lg font-bold">
                     {s.firstName} {s.lastName}
                   </h2>
-                  <p className="text-sm text-muted-foreground">{s.studentId}</p>
+                  <p className="text-sm text-muted-foreground">{s.userId}</p>
                   <div className="mt-3 flex justify-center gap-2">
                     <StatusBadge>{s.status}</StatusBadge>
                     <StatusBadge tone="info">{s.membershipType}</StatusBadge>
@@ -112,7 +112,7 @@ function StudentProfile() {
                       {s.lastName.charAt(0)}
                     </span>
                     <span className="text-sm text-muted-foreground">
-                      andrea-villanueva.jpg · 210 KB
+                      nathaniel-ellacer.jpg · 210 KB
                     </span>
                     <GhostButton type="button" className="ml-auto">
                       Replace

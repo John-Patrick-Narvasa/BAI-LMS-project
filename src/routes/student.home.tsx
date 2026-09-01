@@ -25,15 +25,15 @@ export const Route = createFileRoute("/student/home")({
 
 function StudentHome() {
   const mine = loans.filter(
-    (l) => l.studentId === currentStudent.studentId && l.status !== "Returned",
+    (l) => l.userId === currentStudent.userId && l.status !== "Returned",
   );
   const dueSoon = mine.filter((l) => l.dueDate <= "2026-09-07").length;
   const owed = fines
-    .filter((f) => f.studentId === currentStudent.studentId && f.paymentStatus === "Unpaid")
+    .filter((f) => f.userId === currentStudent.userId && f.paymentStatus === "Unpaid")
     .reduce((s, f) => s + f.amount, 0);
 
   return (
-    <AppShell role="student" title={`Kumusta, ${currentStudent.firstName}`} subtitle="Here's where your borrowing stands today">
+    <AppShell role="student" title={`How are you, ${currentStudent.firstName}`} subtitle="Here's where your borrowing stands today">
       <section className="leaf-pattern card-surface overflow-hidden p-6">
         <p className="text-xs font-semibold tracking-widest text-[var(--leaf-green)] uppercase">
           The BAI Archives
