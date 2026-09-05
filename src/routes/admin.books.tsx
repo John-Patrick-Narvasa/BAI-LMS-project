@@ -235,6 +235,42 @@ function EntryWizard() {
   const [quantity, setQuantity] = useState(5);
   const [done, setDone] = useState(false);
 
+  const [bookForm, setBookForm] = useState({
+    title: "It Ends with Us",
+    authors: "Colleen Hoover",
+    category: "Science",
+    keywords:
+      "Contemporary Fiction, Romance, Drama, Relationships, Domestic Violence, Resilience",
+    summary:
+      "A deeply personal story following Lily Bloom as she navigates a complex romantic relationship while confronting childhood trauma and difficult choices regarding cycle-breaking and emotional boundaries.",
+
+    edition: "1",
+    editor: "Brother Bilo",
+    publisher: "Atria Books",
+    publicationYear: "2016",
+    language: "English",
+    pages: "384",
+    callNumber: "PS3608.O623 I84 2016",
+    price: "16.99",
+
+    format: "Paperback",
+    location: "Main Library - Shelf B2",
+    copyStatus: "Available",
+    condition: "Good",
+    replacementCost: "16.99",
+    physicalProcurementRecord: "PR-2026-FIC-082",
+
+
+    licensedQuantity: "1",
+    fileFormat: "PDF",
+    accessUrl: "https://ebooks.bai.edu/it-ends-with-us",
+    fileSize: "18.4",
+    maxConcurrent: "6",
+    copyrightStatus: "Licensed",
+    accessRestrictions: "Campus network only",
+    digitalProcurementRecord: "PR-2026-DIG-082",
+  });
+
   const match = books.find((b) => b.isbn13 === isbn.trim() || b.isbn10 === isbn.trim());
 
   if (done) {
@@ -322,27 +358,52 @@ function EntryWizard() {
           <h2 className="font-bold">Step 2 — Core info sheet</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Title">
-              <TextInput defaultValue="It Ends with Us" />
+              <TextInput
+                value={bookForm.title}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, title: e.target.value })
+                }
+              />
             </Field>
             <Field label="Author(s)">
-              <TextInput defaultValue="Colleen Hoover" />
+              <TextInput
+                value={bookForm.authors}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, authors: e.target.value })
+                }
+              />
             </Field>
             {/* <Field label="Author(s)">
               <TextInput defaultValue="Colleen Hoover" />
             </Field> */}
             <Field label="Category">
-              <SelectInput defaultValue="Science">
+                <SelectInput
+                  value={bookForm.category}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, category: e.target.value })
+                  }
+                > 
                 {categories.map((c) => (
                   <option key={c}>{c}</option>
                 ))}
               </SelectInput>
             </Field>
             <Field label="Keywords (comma separated)">
-              <TextInput defaultValue="Contemporary Fiction, Romance, Drama, Relationships, Domestic Violence, Resilience" />
+              <TextInput
+                value={bookForm.keywords}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, keywords: e.target.value })
+                }
+              />
             </Field>
           </div>
           <Field label="Summary">
-            <TextArea defaultValue="A deeply personal story following Lily Bloom as she navigates a complex romantic relationship while confronting childhood trauma and difficult choices regarding cycle-breaking and emotional boundaries." />
+            <TextArea
+              value={bookForm.summary}
+              onChange={(e) =>
+                setBookForm({ ...bookForm, summary: e.target.value })
+              }
+            />
           </Field>
           <Field label="Cover image">
             <div className="flex items-center gap-3 rounded-md border border-dashed border-input p-4">
@@ -363,32 +424,72 @@ function EntryWizard() {
           <h2 className="font-bold">Step 3 — Edition info sheet</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Edition number">
-              <TextInput defaultValue="1" />
+              <TextInput
+                value={bookForm.edition}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, edition: e.target.value })
+                }
+              />
             </Field>
             <Field label="Editor(s)">
-              <TextInput defaultValue="Brother Bilo" />
+              <TextInput
+                value={bookForm.editor}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, editor: e.target.value })
+                }
+              />
             </Field>
             <Field label="Publisher">
-              <TextInput defaultValue="Atria Books" />
+              <TextInput
+                value={bookForm.publisher}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, publisher: e.target.value })
+                }
+              />
             </Field>
             <Field label="Publication year">
-              <TextInput defaultValue="2016" />
+              <TextInput
+                value={bookForm.publicationYear}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, publicationYear: e.target.value })
+                }
+              />
             </Field>
             <Field label="Language">
-              <SelectInput defaultValue="English">
+              <SelectInput
+                value={bookForm.language}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, language: e.target.value })
+                }
+              >
                 <option>English</option>
                 <option>Filipino</option>
                 <option>Spanish</option>
               </SelectInput>
             </Field>
             <Field label="Page count">
-              <TextInput defaultValue="384" />
+              <TextInput
+                value={bookForm.pages}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, pages: e.target.value })
+                }
+              />
             </Field>
             <Field label="Call number">
-              <TextInput defaultValue="PS3608.O623 I84 2016" />
+              <TextInput
+                value={bookForm.callNumber}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, callNumber: e.target.value })
+                }
+              />
             </Field>
             <Field label="Price cost (per unit)">
-              <TextInput defaultValue="16.99" />
+              <TextInput
+                value={bookForm.price}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, price: e.target.value })
+                }
+              />
             </Field>
           </div>
           <NavRow onBack={() => setStep(1)} onNext={() => setStep(3)} />
@@ -427,78 +528,153 @@ function EntryWizard() {
                 />
               </Field>
               <Field label="Format">
-                <SelectInput defaultValue="Paperback">
+                <SelectInput
+                  value={bookForm.format}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, format: e.target.value })
+                  }
+                >
                   <option>Hardcover</option>
                   <option>Paperback</option>
                   <option>Spiral</option>
                 </SelectInput>
               </Field>
               <Field label="Location (shelf / rack)">
-                <SelectInput defaultValue="Main Library - Shelf B2">
+                <SelectInput
+                  value={bookForm.location}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, location: e.target.value })
+                  }
+                >
                   {locations.map((l) => (
                     <option key={l}>{l}</option>
                   ))}
                 </SelectInput>
               </Field>
               <Field label="Copy status (default)">
-                <SelectInput defaultValue="Available">
+                <SelectInput
+                  value={bookForm.copyStatus}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, copyStatus: e.target.value })
+                  }
+                >
                   <option>Available</option>
                   <option>Reserved</option>
                 </SelectInput>
               </Field>
               <Field label="Condition (default)">
-                <SelectInput defaultValue="Good">
+                <SelectInput
+                  value={bookForm.condition}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, condition: e.target.value })
+                  }
+                >
                   <option>New</option>
                   <option>Good</option>
                   <option>Fair</option>
                 </SelectInput>
               </Field>
               <Field label="Replacement cost">
-                <TextInput defaultValue="16.99" />
+                <TextInput
+                  value={bookForm.replacementCost}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, replacementCost: e.target.value })
+                  }
+                />
               </Field>
-              <Field label="Procurement record (optional)">
-                <TextInput defaultValue="PR-2026-FIC-082" />
-              </Field>
-              <Field label="Accession range (auto)">
-                <TextInput readOnly value={`ACC-77${101} – ACC-77${100 + quantity}`} />
-              </Field>
+                <Field label="Procurement record (optional)">
+                  <TextInput
+                    value={bookForm.physicalProcurementRecord}
+                    onChange={(e) =>
+                      setBookForm({
+                        ...bookForm,
+                        physicalProcurementRecord: e.target.value,
+                      })
+                    }
+                  />
+                </Field>
             </div>
           ) : (
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="Licensed quantity">
-                <TextInput defaultValue="1" />
-              </Field>
+            <Field label="Licensed quantity">
+              <TextInput
+                type="number"
+                min={1}
+                value={bookForm.licensedQuantity}
+                onChange={(e) =>
+                  setBookForm({ ...bookForm, licensedQuantity: e.target.value })
+                }
+              />
+            </Field>
               <Field label="File format">
-                <SelectInput defaultValue="PDF">
+                <SelectInput
+                  value={bookForm.fileFormat}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, fileFormat: e.target.value })
+                  }
+                >
                   <option>PDF</option>
                   <option>EPUB</option>
                   <option>MOBI</option>
                 </SelectInput>
               </Field>
               <Field label="Access URL">
-                <TextInput defaultValue="https://ebooks.bai.edu/it-ends-with-us" />
+                <TextInput
+                  value={bookForm.accessUrl}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, accessUrl: e.target.value })
+                  }
+                />
               </Field>
               <Field label="File size (MB)">
-                <TextInput defaultValue="18.4" />
+                <TextInput
+                  value={bookForm.fileSize}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, fileSize: e.target.value })
+                  }
+                />
               </Field>
               <Field label="Max concurrent users">
-                <TextInput defaultValue="6" />
+                <TextInput
+                  value={bookForm.maxConcurrent}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, maxConcurrent: e.target.value })
+                  }
+                />
               </Field>
               <Field label="Copyright status">
-                <SelectInput defaultValue="Licensed">
+                <SelectInput
+                  value={bookForm.copyrightStatus}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, copyrightStatus: e.target.value })
+                  }
+                >
                   <option>Licensed</option>
                   <option>Public Domain</option>
                   <option>Open Access</option>
                 </SelectInput>
               </Field>
               <Field label="Access restrictions">
-                <SelectInput defaultValue="Library network only">
+                <SelectInput
+                  value={bookForm.accessRestrictions}
+                  onChange={(e) =>
+                    setBookForm({ ...bookForm, accessRestrictions: e.target.value })
+                  }
+                >
                   <option>Library network only</option>
                   <option>Unrestricted</option>
                 </SelectInput>
               </Field>
               <Field label="Procurement record (optional)">
-                <TextInput defaultValue="PR-2026-FIC-082" />
+                <TextInput
+                  value={bookForm.digitalProcurementRecord}
+                  onChange={(e) =>
+                    setBookForm({
+                      ...bookForm,
+                      digitalProcurementRecord: e.target.value,
+                    })
+                  }
+                />
               </Field>
             </div>
           )}
@@ -526,18 +702,21 @@ function EntryWizard() {
             <div className="grid flex-1 gap-3 sm:grid-cols-2">
               <Field label="Title">
                 <TextInput
-                  defaultValue={
-                    exists ? (match?.title ?? "") : "It Ends with Us"
-                  }
+                  readOnly
+                  value={bookForm.title}
                 />
               </Field>
               <Field label="Category">
                 <TextInput
-                  defaultValue={exists ? (match?.category ?? "") : "Science"}
+                  readOnly
+                  value={bookForm.category}
                 />
               </Field>
               <Field label="Edition / Year">
-                <TextInput defaultValue="1st · 2016" />
+                <TextInput
+                  readOnly
+                  value={`${bookForm.edition} · ${bookForm.publicationYear}`}
+                />
               </Field>
               <Field label="Asset type">
                 <TextInput readOnly value={assetType} />
@@ -557,8 +736,8 @@ function EntryWizard() {
                   readOnly
                   value={
                     assetType === "Physical"
-                      ? "Shelf D Rack 5"
-                      : "6"
+                      ? bookForm.location
+                      : bookForm.maxConcurrent
                   }
                 />
               </Field>
